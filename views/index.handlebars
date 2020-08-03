@@ -1,0 +1,56 @@
+
+<h1 class="pmarker text-center">EAT-tha-BURGER</h1>
+<img src="">
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 text-center">
+            <h2 class="pmarker">Burger List</h2>
+
+            
+                {{#each burgers}}
+                {{#unless devoured}}
+                <div>
+                    <p id="burger">{{this.id}}.{{this.burger_name}}</p>
+                <form id="form-devour" action="/api/burgers" method="GET">
+                
+                    <input class="burger_id" name="burger_name" type="hidden" value={{this.id}}>
+                
+                    <button type="submit" class="btn btn-submit button-font">Devour It</button>
+                </form>
+                {{/unless}}
+                {{/each}}
+        
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <h2 class="pmarker">Devoured Burgers</h2>
+
+            
+                {{#each burgers}}
+                {{#if devoured}}
+            <div>
+                <p>{{this.id}}.{{this.burger_name}}</p>
+            </div>
+                
+            
+                {{/if}}
+                {{/each}}
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h2 class="pmarker">Add a Burger to the List</h2>
+            <form id="form" action="/api/burgers" method="POST">
+                
+                    <label for="ca">Burger Name:</label>
+                    <input type="text" id="enterText" name="burger_name">
+
+                <button type="submit" class="btn btn-submit button-font">Add Burger</button>
+            </form>
+        </div>
+    </div>
+</div>
